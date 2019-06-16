@@ -25,6 +25,7 @@ public class Oracle {
             while (resultSet.next()){
                 System.out.println(resultSet.getObject(1)+" "+resultSet.getObject(2));
                 System.out.println("git-test");
+                System.out.println("oraclegit2edition");
             }
         } catch (SQLException e) {
             e.printStackTrace();
