@@ -58,6 +58,13 @@
             <artifactId>leyou-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+<!--        添加item pojo的依赖-->
+        <dependency>
+            <groupId>com.leyou.service</groupId>
+            <artifactId>leyou-item-pojo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

@@ -13,4 +13,12 @@
     <artifactId>leyou-item-pojo</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-core</artifactId>
+            <version>1.1.4</version>
+        </dependency>
+    </dependencies>
+
 </project>
