@@ -8,6 +8,7 @@
         <module>leyou-zuul</module>
         <module>leyou-item</module>
         <module>leyou-common</module>
+        <module>leyou-upload</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

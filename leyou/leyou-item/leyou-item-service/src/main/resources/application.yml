@@ -25,4 +25,4 @@ eureka:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true #开启驼峰匹配
-  mapper-locations: classpath: mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml # scan mybatis' mapper-xml profile
