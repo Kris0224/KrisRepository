@@ -1,0 +1,25 @@
+server:
+  port: 10010 #服务端口
+spring:
+  application:
+    name: zuul-server #指定服务名
+
+#普通配置格式
+#zuul:
+#  routes:
+#    luyou: #路由id
+#     path: /user-service/** # 这里是映射路径
+#     # url: http://127.0.0.1:8081 # 映射路径对应的实际url地址
+#     serviceId: user-service # 指定服务名称
+#
+#简洁配置格式 路由名=服务名
+zuul:
+  routes:
+    user-service: /user-service/**
+  ignored-services: #禁用的路由规则
+    - consumer
+
+eureka:
+  client:
+    service-url: # EurekaServer地址
+      defaultZone: http://127.0.0.1:10086/eureka

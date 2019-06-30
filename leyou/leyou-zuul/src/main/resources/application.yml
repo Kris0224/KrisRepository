@@ -17,6 +17,8 @@ zuul:
   retryable: true
   routes:
     item-service: /item/** # 将商品微服务映射到/item/**
+    upload-service: /upload/** # 将上传微服务映射到/item/**
+    search-service: /search/** # 将搜索微服务映射到/item/**
   ignored-services:
     - leyou-registry
     - leyou-zuul

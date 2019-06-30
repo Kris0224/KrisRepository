@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leyou.mapper.BrandMapper">
+
+
+    <!--新增商品 -->
+    <insert id="addBrand">
+--           主键回显
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+
+        INSERT INTO tb_brand(
+	     name,
+	     image,
+	     letter
+    )
+    VALUES
+     (#{name},#{image},#{letter})
+
+    </insert>
+
+    <!-- INSERT the TABLE BETWEEN CATAGORY AND BRAND-->
+    <insert id="addMiddleBrand">
+        INSERT INTO tb_category_brand(category_id, brand_id)
+          VALUES
+        <foreach collection="cids" item="cid" separator=",">
+            (#{bid}, #{cid})
+        </foreach>
+    </insert>
+
+<!--    新增中间表-->
+    <insert id="insertCategoryBrand">
+        INSERT INTO `tb_category_brand` (`category_id`, `brand_id`)
+        VALUES
+        <foreach collection="cids" item="cid" separator=",">
+            (#{bid}, #{cid})
+        </foreach>
+    </insert>
+
+
+    <!--    根据关键字查询-->
+    <select id="selectBrandbyKey" resultType="com.leyou.entity.Brand">
+        select
+        *
+        from
+        tb_brand
+        where
+        name like '%# {key} %'
+        or
+        letter =='#{key}'
+        <choose>
+            <when test="sortby==false">
+                order by id asc
+            </when>
+            <otherwise>
+                order by id DESC
+            </otherwise>
+        </choose>
+        limit #{startIndex},5
+    </select>
+
+<!--    查询总条数-->
+    <select id="selectTotalConut" resultType="java.lang.Long">
+        select count(*) from tb_brand
+    </select>
+
+<!--    根据cid查询brand-->
+    <select id="queryBrandByCid" resultType="com.leyou.entity.Brand">
+        select * from tb_brand a
+        inner join
+        tb_category_brand cb on a.id = cd.brand_id
+        where cb.category_id = #{cid}
+    </select>
+</mapper>

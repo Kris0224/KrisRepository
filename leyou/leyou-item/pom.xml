@@ -6,6 +6,7 @@
     <modules>
         <module>leyou-item-pojo</module>
         <module>leyou-item-service</module>
+        <module>leyou-item-interface</module>
     </modules>
 
     <parent>
